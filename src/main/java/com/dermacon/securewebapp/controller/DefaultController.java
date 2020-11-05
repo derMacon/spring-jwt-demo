@@ -1,41 +1,26 @@
 package com.dermacon.securewebapp.controller;
 
-import com.dermacon.securewebapp.data.User;
-import com.dermacon.securewebapp.data.UserRepository;
+import com.dermacon.securewebapp.model.Account;
+import com.dermacon.securewebapp.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Controller
+@RestController
 public class DefaultController {
 
     @Autowired
-    UserRepository userRepository;
-
+    AccountRepository accountRepository;
 
     @RequestMapping("/")
-    public String index(Model model) {
-        model.addAttribute("selectedDomain", "home");
-        return "main";
+    public String index() {
+        Iterable<Account> a = accountRepository.findAll();
+        return "hi";
     }
-
-//    @RequestMapping("/noSecurity")
-//    public String noSecurity() {
-//        return "noSecurity";
-//    }
-
-    @ModelAttribute
-    public void addAttributes(Model model) {
-        List<User> users = (List<User>) userRepository.findAll();
-//        List<User> users = new LinkedList<>();
-
-        model.addAttribute("users", users);
-    }
-
 
 }
