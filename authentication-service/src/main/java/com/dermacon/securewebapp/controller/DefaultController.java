@@ -14,12 +14,8 @@ import java.util.List;
 @RestController
 public class DefaultController {
 
-    @Autowired
-    AccountRepository accountRepository;
-
     @RequestMapping("/")
     public String index() {
-        Iterable<Account> a = accountRepository.findAll();
         return "hi";
     }
 
