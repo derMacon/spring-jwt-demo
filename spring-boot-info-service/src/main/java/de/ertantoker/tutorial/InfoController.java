@@ -15,4 +15,5 @@ public class InfoController {
         infoResponse.setInfo("Demo Info");
         return new ResponseEntity<>(infoResponse, HttpStatus.OK);
     }
+
 }

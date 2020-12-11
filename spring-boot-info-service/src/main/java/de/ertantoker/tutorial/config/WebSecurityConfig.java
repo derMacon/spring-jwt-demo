@@ -11,6 +11,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 
@@ -26,9 +29,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private JwtAuthenticationProvider jwtAuthenticationProvider;
 
     @Autowired
-    public void configureAuthentication(AuthenticationManagerBuilder authenticationManagerBuilder) {
-        authenticationManagerBuilder.authenticationProvider(jwtAuthenticationProvider);
+    private UserDetailsService userDetailsService;
+
+    @Bean
+    public static PasswordEncoder passwordEncoder() {
+        return NoOpPasswordEncoder.getInstance();
     }
+
+//    @Autowired
+//    public void configureAuthentication(AuthenticationManagerBuilder authenticationManagerBuilder) {
+//        authenticationManagerBuilder.authenticationProvider(jwtAuthenticationProvider);
+//    }
 
     @Bean
     public JwtAuthenticationTokenFilter authenticationTokenFilterBean() {
@@ -37,14 +48,30 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity
-                .csrf().disable()
-                .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                .authorizeRequests()
-                .anyRequest().authenticated();
+//        httpSecurity
+//                .csrf().disable()
+//                .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
+//                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+//                .authorizeRequests()
+//                .anyRequest().authenticated();
 
-        httpSecurity.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
-        httpSecurity.headers().cacheControl();
+        httpSecurity.authorizeRequests().antMatchers("/noSecurity").permitAll()
+                .anyRequest().authenticated()
+                .and().formLogin().permitAll();
+
+//        httpSecurity.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
+//        httpSecurity.headers().cacheControl();
     }
+
+
+    @Autowired
+    public void globalSecurityConfiguration(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService);
+    }
+
+    @Bean
+    public UserDetailsService userDetailsService() {
+        return super.userDetailsService();
+    }
+
 }

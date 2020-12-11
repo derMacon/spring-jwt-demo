@@ -3,11 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="39bc8f2c-6747-4cb9-b6cc-96ce4d5a292f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-boot-info-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-info-service.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/ertantoker/tutorial/security/JwtTokenService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/ertantoker/tutorial/security/JwtTokenService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/ertantoker/tutorial/InfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/ertantoker/tutorial/InfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/ertantoker/tutorial/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/ertantoker/tutorial/config/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/de/ertantoker/tutorial/config/WebSecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/ertantoker/tutorial/config/WebSecurityConfig.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,6 +18,13 @@
       <map>
         <entry key="last-active-plugin-version" value="5.23.0" />
       </map>
+    </option>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
     </option>
   </component>
   <component name="Git.Settings">
@@ -41,7 +46,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../token-generator" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -85,6 +90,7 @@
       <workItem from="1605150458318" duration="373000" />
       <workItem from="1605150913918" duration="253000" />
       <workItem from="1605151282340" duration="540000" />
+      <workItem from="1607711925400" duration="251000" />
     </task>
     <servers />
   </component>
